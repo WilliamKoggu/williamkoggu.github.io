@@ -1,0 +1,763 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>William Koggu — Compliance Professional</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --ink:        #0D1B2A;
+    --ink-mid:    #2E4057;
+    --slate:      #556B7D;
+    --rule:       #C8D6E0;
+    --paper:      #F7F9FB;
+    --white:      #FFFFFF;
+    --gold:       #B8860B;
+    --gold-light: #F0E6C8;
+    --flag-band:  3px;
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'Inter', sans-serif;
+    background: var(--paper);
+    color: var(--ink);
+    font-size: 15px;
+    line-height: 1.65;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  /* ── NAV ── */
+  nav {
+    position: sticky; top: 0; z-index: 100;
+    background: var(--ink);
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 0 48px;
+    height: 56px;
+  }
+  .nav-name {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 13px; font-weight: 500;
+    color: var(--gold);
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+  .nav-links { display: flex; gap: 32px; list-style: none; }
+  .nav-links a {
+    color: rgba(255,255,255,0.65);
+    text-decoration: none;
+    font-size: 12px; font-weight: 500;
+    letter-spacing: 0.06em; text-transform: uppercase;
+    transition: color 0.2s;
+  }
+  .nav-links a:hover { color: var(--white); }
+
+  /* ── HERO ── */
+  .hero {
+    background: var(--ink);
+    padding: 96px 48px 80px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  /* Signature element: jurisdiction flag-strip — a row of thin colored bands
+     representing the 6 regulatory jurisdictions, running across the bottom of hero */
+  .flag-strip {
+    position: absolute; bottom: 0; left: 0; right: 0;
+    height: 5px;
+    display: flex;
+  }
+  .flag-strip span { flex: 1; }
+  .fs-ng  { background: #008751; }
+  .fs-za  { background: #007A4D; }
+  .fs-gh  { background: #FCD116; }
+  .fs-uk  { background: #012169; }
+  .fs_us  { background: #B22234; }
+  .fs-eu  { background: #003399; }
+
+  .hero-inner { max-width: 860px; }
+
+  .hero-eyebrow {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px; font-weight: 500;
+    color: var(--gold);
+    letter-spacing: 0.12em; text-transform: uppercase;
+    margin-bottom: 24px;
+  }
+
+  .hero-name {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(42px, 6vw, 72px);
+    font-weight: 900;
+    color: var(--white);
+    line-height: 1.05;
+    margin-bottom: 20px;
+  }
+
+  .hero-title {
+    font-size: 18px; font-weight: 300;
+    color: rgba(255,255,255,0.7);
+    margin-bottom: 36px;
+    max-width: 600px;
+    line-height: 1.6;
+  }
+
+  .hero-title strong { color: var(--white); font-weight: 500; }
+
+  .jurisdiction-row {
+    display: flex; flex-wrap: wrap; gap: 10px;
+    margin-bottom: 44px;
+  }
+  .jur-tag {
+    display: flex; align-items: center; gap: 8px;
+    background: rgba(255,255,255,0.07);
+    border: 1px solid rgba(255,255,255,0.12);
+    border-radius: 3px;
+    padding: 6px 14px;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px; font-weight: 500;
+    color: rgba(255,255,255,0.8);
+    letter-spacing: 0.06em;
+  }
+  .jur-dot { width: 8px; height: 8px; border-radius: 50%; flex-shrink: 0; }
+
+  .hero-stats {
+    display: flex; gap: 48px; flex-wrap: wrap;
+    border-top: 1px solid rgba(255,255,255,0.1);
+    padding-top: 36px;
+  }
+  .stat-item {}
+  .stat-num {
+    font-family: 'Playfair Display', serif;
+    font-size: 36px; font-weight: 700;
+    color: var(--white);
+    line-height: 1;
+    margin-bottom: 4px;
+  }
+  .stat-label {
+    font-size: 11px; font-weight: 500;
+    color: rgba(255,255,255,0.45);
+    text-transform: uppercase; letter-spacing: 0.08em;
+  }
+
+  /* ── SECTIONS ── */
+  section { padding: 80px 48px; }
+  section:nth-child(even) { background: var(--white); }
+
+  .section-inner { max-width: 900px; margin: 0 auto; }
+
+  .section-label {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px; font-weight: 500;
+    color: var(--gold);
+    letter-spacing: 0.12em; text-transform: uppercase;
+    margin-bottom: 12px;
+  }
+  .section-heading {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(26px, 3vw, 36px);
+    font-weight: 700;
+    color: var(--ink);
+    margin-bottom: 40px;
+    line-height: 1.2;
+  }
+
+  /* ── JURISDICTION MAP SECTION ── */
+  .jur-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 1px;
+    background: var(--rule);
+    border: 1px solid var(--rule);
+    margin-bottom: 48px;
+  }
+  .jur-card {
+    background: var(--white);
+    padding: 28px;
+    position: relative;
+  }
+  section:nth-child(even) .jur-card { background: var(--paper); }
+  .jur-card::before {
+    content: '';
+    position: absolute; top: 0; left: 0;
+    width: 100%; height: 4px;
+  }
+  .jur-ng::before  { background: #008751; }
+  .jur-za::before  { background: #007A4D; }
+  .jur-gh::before  { background: #FCD116; }
+  .jur-uk::before  { background: #012169; }
+  .jur-us::before  { background: #B22234; }
+  .jur-eu::before  { background: #003399; }
+
+  .jur-card-flag {
+    font-size: 22px; margin-bottom: 10px;
+  }
+  .jur-card-country {
+    font-family: 'Playfair Display', serif;
+    font-size: 17px; font-weight: 700;
+    color: var(--ink);
+    margin-bottom: 6px;
+  }
+  .jur-card-regs {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px; color: var(--gold);
+    letter-spacing: 0.06em;
+    margin-bottom: 10px;
+    line-height: 1.8;
+  }
+  .jur-card-desc {
+    font-size: 13px; color: var(--slate);
+    line-height: 1.6;
+  }
+
+  /* ── EXPERIENCE TIMELINE ── */
+  .timeline { position: relative; }
+  .timeline::before {
+    content: '';
+    position: absolute; left: 0; top: 0; bottom: 0;
+    width: 2px; background: var(--rule);
+  }
+  .tl-item {
+    padding-left: 32px;
+    margin-bottom: 48px;
+    position: relative;
+  }
+  .tl-item::before {
+    content: '';
+    position: absolute; left: -5px; top: 6px;
+    width: 12px; height: 12px;
+    border-radius: 50%;
+    background: var(--gold);
+    border: 2px solid var(--paper);
+  }
+  section:nth-child(even) .tl-item::before { border-color: var(--white); }
+  .tl-period {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px; font-weight: 500;
+    color: var(--slate);
+    letter-spacing: 0.08em; text-transform: uppercase;
+    margin-bottom: 4px;
+  }
+  .tl-role {
+    font-family: 'Playfair Display', serif;
+    font-size: 18px; font-weight: 700;
+    color: var(--ink); margin-bottom: 2px;
+  }
+  .tl-org {
+    font-size: 13px; font-weight: 600;
+    color: var(--gold); margin-bottom: 12px;
+  }
+  .tl-bullets { list-style: none; }
+  .tl-bullets li {
+    font-size: 13.5px; color: var(--slate);
+    line-height: 1.65; padding-left: 16px;
+    position: relative; margin-bottom: 6px;
+  }
+  .tl-bullets li::before {
+    content: '—';
+    position: absolute; left: 0;
+    color: var(--rule); font-size: 11px;
+  }
+
+  /* ── EXPERTISE GRID ── */
+  .expertise-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 16px;
+    margin-bottom: 0;
+  }
+  .exp-card {
+    border: 1px solid var(--rule);
+    padding: 24px 20px;
+    background: var(--paper);
+  }
+  section:nth-child(even) .exp-card { background: var(--white); }
+  .exp-icon { font-size: 20px; margin-bottom: 12px; }
+  .exp-title {
+    font-size: 13px; font-weight: 600;
+    color: var(--ink); margin-bottom: 8px;
+  }
+  .exp-tags { display: flex; flex-wrap: wrap; gap: 6px; }
+  .exp-tag {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 9.5px; font-weight: 500;
+    color: var(--slate);
+    background: var(--rule);
+    padding: 3px 8px;
+    border-radius: 2px;
+    letter-spacing: 0.04em;
+  }
+
+  /* ── CERTS ── */
+  .certs-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 16px;
+  }
+  .cert-item {
+    display: flex; align-items: flex-start; gap: 16px;
+    padding: 20px;
+    border: 1px solid var(--rule);
+    background: var(--white);
+  }
+  section:nth-child(even) .cert-item { background: var(--paper); }
+  .cert-badge {
+    width: 40px; height: 40px;
+    background: var(--ink);
+    color: var(--gold);
+    border-radius: 2px;
+    display: flex; align-items: center; justify-content: center;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 9px; font-weight: 500;
+    letter-spacing: 0.02em;
+    flex-shrink: 0;
+    text-align: center; line-height: 1.3;
+  }
+  .cert-name { font-size: 13px; font-weight: 600; color: var(--ink); margin-bottom: 2px; }
+  .cert-body { font-size: 11px; color: var(--slate); }
+
+  /* ── CONTACT ── */
+  .contact-bar {
+    background: var(--ink);
+    padding: 64px 48px;
+    text-align: center;
+  }
+  .contact-bar h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: 32px; font-weight: 700;
+    color: var(--white); margin-bottom: 12px;
+  }
+  .contact-bar p {
+    color: rgba(255,255,255,0.55);
+    font-size: 14px; margin-bottom: 32px;
+  }
+  .contact-links { display: flex; justify-content: center; gap: 16px; flex-wrap: wrap; }
+  .contact-btn {
+    display: inline-block;
+    padding: 12px 28px;
+    font-size: 12px; font-weight: 600;
+    letter-spacing: 0.06em; text-transform: uppercase;
+    text-decoration: none;
+    border-radius: 2px;
+    transition: all 0.2s;
+  }
+  .btn-primary {
+    background: var(--gold);
+    color: var(--ink);
+  }
+  .btn-primary:hover { background: #d4a017; }
+  .btn-ghost {
+    background: transparent;
+    color: rgba(255,255,255,0.7);
+    border: 1px solid rgba(255,255,255,0.2);
+  }
+  .btn-ghost:hover { border-color: rgba(255,255,255,0.5); color: var(--white); }
+
+  /* ── FOOTER ── */
+  footer {
+    background: var(--ink);
+    border-top: 1px solid rgba(255,255,255,0.06);
+    padding: 20px 48px;
+    display: flex; justify-content: space-between; align-items: center;
+    flex-wrap: wrap; gap: 8px;
+  }
+  footer span {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px; color: rgba(255,255,255,0.25);
+    letter-spacing: 0.06em;
+  }
+
+  /* ── RESPONSIVE ── */
+  @media (max-width: 640px) {
+    nav { padding: 0 20px; }
+    .nav-links { display: none; }
+    .hero, section { padding: 60px 20px; }
+    .hero-stats { gap: 28px; }
+    .contact-bar { padding: 48px 20px; }
+    footer { padding: 20px; }
+    .tl-item { padding-left: 24px; }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    * { transition: none !important; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <span class="nav-name">W. Koggu</span>
+  <ul class="nav-links">
+    <li><a href="#jurisdictions">Jurisdictions</a></li>
+    <li><a href="#experience">Experience</a></li>
+    <li><a href="#expertise">Expertise</a></li>
+    <li><a href="#certifications">Certifications</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<header class="hero">
+  <div class="hero-inner">
+    <p class="hero-eyebrow">Compliance Manager · Lagos, Nigeria</p>
+    <h1 class="hero-name">William<br>Koggu</h1>
+    <p class="hero-title">
+      <strong>8+ years</strong> operationalizing AML/CFT, KYC/KYB, and data privacy frameworks across
+      <strong>six regulatory jurisdictions</strong> — from FATF-aligned Nigerian fintech to
+      EU GDPR, UK FCA, US BSA/AML Act 2020, South African FICA, and Ghanaian Banking Commission standards.
+    </p>
+
+    <div class="jurisdiction-row">
+      <div class="jur-tag"><span class="jur-dot" style="background:#008751"></span>Nigeria · CBN / NFIU</div>
+      <div class="jur-tag"><span class="jur-dot" style="background:#007A4D"></span>South Africa · FICA / FSCA</div>
+      <div class="jur-tag"><span class="jur-dot" style="background:#d4a800"></span>Ghana · BoG / GRA</div>
+      <div class="jur-tag"><span class="jur-dot" style="background:#4a6fa5"></span>United Kingdom · FCA / JMLSG</div>
+      <div class="jur-tag"><span class="jur-dot" style="background:#B22234"></span>United States · BSA / OFAC / AML Act 2020</div>
+      <div class="jur-tag"><span class="jur-dot" style="background:#6680cc"></span>European Union · AMLD / GDPR / MiCA</div>
+    </div>
+
+    <div class="hero-stats">
+      <div class="stat-item">
+        <div class="stat-num">8+</div>
+        <div class="stat-label">Years in Compliance</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-num">6</div>
+        <div class="stat-label">Regulatory Jurisdictions</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-num">6</div>
+        <div class="stat-label">ISO Certifications</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-num">5</div>
+        <div class="stat-label">Institutions Served</div>
+      </div>
+    </div>
+  </div>
+  <div class="flag-strip">
+    <span class="fs-ng"></span>
+    <span class="fs-za"></span>
+    <span class="fs-gh"></span>
+    <span class="fs-uk"></span>
+    <span class="fs_us"></span>
+    <span class="fs-eu"></span>
+  </div>
+</header>
+
+<!-- JURISDICTIONS -->
+<section id="jurisdictions">
+  <div class="section-inner">
+    <p class="section-label">Regulatory Reach</p>
+    <h2 class="section-heading">Cross-jurisdictional compliance expertise</h2>
+    <div class="jur-grid">
+
+      <div class="jur-card jur-ng">
+        <div class="jur-card-flag">🇳🇬</div>
+        <div class="jur-card-country">Nigeria</div>
+        <div class="jur-card-regs">CBN · NFIU · SCUML · NDPR · BOFIA</div>
+        <div class="jur-card-desc">Deep operational experience embedding AML/CFT programs in Nigerian fintech and financial services, including transaction monitoring, STR/CTR reporting, and CBN regulatory examinations at Oxygen X Finance, Moniepoint MFB, and Access Bank.</div>
+      </div>
+
+      <div class="jur-card jur-za">
+        <div class="jur-card-flag">🇿🇦</div>
+        <div class="jur-card-country">South Africa</div>
+        <div class="jur-card-regs">FICA · FSCA · POPIA · FIC Act</div>
+        <div class="jur-card-desc">Applied FICA-aligned KYC/KYB frameworks and POPIA data privacy obligations across cross-border financial operations and compliance program design targeting the South African regulatory environment.</div>
+      </div>
+
+      <div class="jur-card jur-gh">
+        <div class="jur-card-flag">🇬🇭</div>
+        <div class="jur-card-country">Ghana</div>
+        <div class="jur-card-regs">Bank of Ghana · GRA · AML Act · Gaming Commission</div>
+        <div class="jur-card-desc">Operationalized compliance requirements under the Bank of Ghana's AML directives and Gaming Commission of Ghana licensing standards, with application to both fintech payments and iGaming compliance frameworks.</div>
+      </div>
+
+      <div class="jur-card jur-uk">
+        <div class="jur-card-flag">🇬🇧</div>
+        <div class="jur-card-country">United Kingdom</div>
+        <div class="jur-card-regs">FCA · JMLSG · MLR 2017 · UK GDPR · UKSA</div>
+        <div class="jur-card-desc">Applied FCA Handbook principles and JMLSG guidance in compliance program design, including customer due diligence standards, sanctions screening under OFSI, and UK GDPR data protection requirements.</div>
+      </div>
+
+      <div class="jur-card jur-us">
+        <div class="jur-card-flag">🇺🇸</div>
+        <div class="jur-card-country">United States</div>
+        <div class="jur-card-regs">BSA · AML Act 2020 · OFAC · FinCEN · CTA</div>
+        <div class="jur-card-desc">Designed and assessed AML programs against BSA/AML Act 2020 requirements, OFAC sanctions compliance, FinCEN beneficial ownership rules, and the Corporate Transparency Act — with particular application to cross-border fintech and crypto contexts.</div>
+      </div>
+
+      <div class="jur-card jur-eu">
+        <div class="jur-card-flag">🇪🇺</div>
+        <div class="jur-card-country">European Union</div>
+        <div class="jur-card-regs">AMLD 5/6 · GDPR · MiCA · EBA Guidelines · PSD2</div>
+        <div class="jur-card-desc">Applied EU AMLD 5th & 6th Directive frameworks, GDPR data privacy controls, and MiCA crypto-asset regulations in compliance assessments and program design. ISO 27701 Lead Auditor certification directly underpins GDPR operationalization.</div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- EXPERIENCE -->
+<section id="experience">
+  <div class="section-inner">
+    <p class="section-label">Career History</p>
+    <h2 class="section-heading">Where the frameworks met the ground</h2>
+    <div class="timeline">
+
+      <div class="tl-item">
+        <div class="tl-period">2023 — Present</div>
+        <div class="tl-role">Compliance Manager</div>
+        <div class="tl-org">Oxygen X Finance Company Limited · Lagos</div>
+        <ul class="tl-bullets">
+          <li>Lead AML/CFT program design and implementation across all business lines, ensuring alignment with CBN regulations and FATF recommendations.</li>
+          <li>Oversee KYC/KYB onboarding frameworks, transaction monitoring rules, and sanctions screening — covering customer exposure to UK, US, EU, and African regulatory environments.</li>
+          <li>Manage regulatory examinations, internal audits, and cross-border compliance assessments.</li>
+          <li>Administer ISO 27001 and ISO 27701 PIMS controls, embedding GDPR-equivalent data privacy obligations into fintech operations.</li>
+        </ul>
+      </div>
+
+      <div class="tl-item">
+        <div class="tl-period">2021 — 2023</div>
+        <div class="tl-role">Compliance Officer</div>
+        <div class="tl-org">Moniepoint Microfinance Bank · Lagos</div>
+        <ul class="tl-bullets">
+          <li>Designed and operationalized AML transaction monitoring systems for high-volume payment processing, including STR/CTR filing workflows.</li>
+          <li>Built and maintained KYC/KYB procedures aligned with CBN Consumer Protection Regulations and NFIU guidelines.</li>
+          <li>Conducted risk-based customer due diligence and enhanced due diligence for high-risk accounts and PEPs.</li>
+        </ul>
+      </div>
+
+      <div class="tl-item">
+        <div class="tl-period">2019 — 2021</div>
+        <div class="tl-role">Compliance & Risk Officer</div>
+        <div class="tl-org">Access Bank Plc · Lagos</div>
+        <ul class="tl-bullets">
+          <li>Supported enterprise-wide AML compliance across a multi-jurisdictional banking group, contributing to Africa, UK, and international regulatory alignment.</li>
+          <li>Executed sanctions screening processes using OFAC, UN, HMT, and EU consolidated lists.</li>
+          <li>Contributed to GRC framework documentation and regulatory reporting under BOFIA and CBN prudential guidelines.</li>
+        </ul>
+      </div>
+
+      <div class="tl-item">
+        <div class="tl-period">2017 — 2019</div>
+        <div class="tl-role">Compliance Analyst</div>
+        <div class="tl-org">Innovectives Group / 3Line Card Management · Lagos</div>
+        <ul class="tl-bullets">
+          <li>Implemented card scheme compliance requirements (Visa/Mastercard) alongside CBN card issuance regulations.</li>
+          <li>Maintained AML/CFT monitoring programs for payment card and e-money operations.</li>
+          <li>Supported ISO 9001 quality management system audits and documentation.</li>
+        </ul>
+      </div>
+
+      <div class="tl-item">
+        <div class="tl-period">2015 — 2017</div>
+        <div class="tl-role">Compliance & HSSE Officer</div>
+        <div class="tl-org">DHL Express Nigeria · Lagos</div>
+        <ul class="tl-bullets">
+          <li>Administered regulatory compliance for international express logistics, including customs, trade controls, and HSSE standards.</li>
+          <li>Applied international trade compliance frameworks relevant to US (EAR/ITAR adjacent), EU, and UK export controls.</li>
+          <li>Conducted internal safety audits and maintained NEBOSH-aligned health, safety, and environment protocols.</li>
+        </ul>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- EXPERTISE -->
+<section id="expertise">
+  <div class="section-inner">
+    <p class="section-label">Core Competencies</p>
+    <h2 class="section-heading">Disciplines and frameworks</h2>
+    <div class="expertise-grid">
+
+      <div class="exp-card">
+        <div class="exp-icon">🔍</div>
+        <div class="exp-title">AML / CFT</div>
+        <div class="exp-tags">
+          <span class="exp-tag">FATF</span>
+          <span class="exp-tag">BSA</span>
+          <span class="exp-tag">AML Act 2020</span>
+          <span class="exp-tag">AMLD 5/6</span>
+          <span class="exp-tag">STR/CTR</span>
+          <span class="exp-tag">TM Rules</span>
+        </div>
+      </div>
+
+      <div class="exp-card">
+        <div class="exp-icon">🪪</div>
+        <div class="exp-title">KYC / KYB</div>
+        <div class="exp-tags">
+          <span class="exp-tag">CDD</span>
+          <span class="exp-tag">EDD</span>
+          <span class="exp-tag">PEP Screening</span>
+          <span class="exp-tag">Beneficial Ownership</span>
+          <span class="exp-tag">CTA</span>
+        </div>
+      </div>
+
+      <div class="exp-card">
+        <div class="exp-icon">🛡️</div>
+        <div class="exp-title">Sanctions Screening</div>
+        <div class="exp-tags">
+          <span class="exp-tag">OFAC</span>
+          <span class="exp-tag">UN Lists</span>
+          <span class="exp-tag">HMT / OFSI</span>
+          <span class="exp-tag">EU Consolidated</span>
+          <span class="exp-tag">SDN</span>
+        </div>
+      </div>
+
+      <div class="exp-card">
+        <div class="exp-icon">🔒</div>
+        <div class="exp-title">Data Privacy</div>
+        <div class="exp-tags">
+          <span class="exp-tag">GDPR</span>
+          <span class="exp-tag">UK GDPR</span>
+          <span class="exp-tag">NDPR</span>
+          <span class="exp-tag">POPIA</span>
+          <span class="exp-tag">ISO 27701</span>
+          <span class="exp-tag">PIMS</span>
+        </div>
+      </div>
+
+      <div class="exp-card">
+        <div class="exp-icon">📋</div>
+        <div class="exp-title">GRC Frameworks</div>
+        <div class="exp-tags">
+          <span class="exp-tag">ISO 27001</span>
+          <span class="exp-tag">ISO 22301</span>
+          <span class="exp-tag">ISO 9001</span>
+          <span class="exp-tag">Risk Assessment</span>
+          <span class="exp-tag">Policy Design</span>
+        </div>
+      </div>
+
+      <div class="exp-card">
+        <div class="exp-icon">📊</div>
+        <div class="exp-title">Transaction Monitoring</div>
+        <div class="exp-tags">
+          <span class="exp-tag">Rule Design</span>
+          <span class="exp-tag">Alert Triage</span>
+          <span class="exp-tag">Typology Analysis</span>
+          <span class="exp-tag">Crypto TM</span>
+        </div>
+      </div>
+
+      <div class="exp-card">
+        <div class="exp-icon">🎰</div>
+        <div class="exp-title">iGaming Compliance</div>
+        <div class="exp-tags">
+          <span class="exp-tag">MGA</span>
+          <span class="exp-tag">KSA</span>
+          <span class="exp-tag">GCB Ghana</span>
+          <span class="exp-tag">Responsible Gaming</span>
+          <span class="exp-tag">AML</span>
+        </div>
+      </div>
+
+      <div class="exp-card">
+        <div class="exp-icon">⚠️</div>
+        <div class="exp-title">Health & Safety</div>
+        <div class="exp-tags">
+          <span class="exp-tag">NEBOSH IGC</span>
+          <span class="exp-tag">HSSE</span>
+          <span class="exp-tag">Risk Assessment</span>
+          <span class="exp-tag">Incident Management</span>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- CERTIFICATIONS -->
+<section id="certifications">
+  <div class="section-inner">
+    <p class="section-label">Professional Credentials</p>
+    <h2 class="section-heading">Certifications and qualifications</h2>
+    <div class="certs-grid">
+
+      <div class="cert-item">
+        <div class="cert-badge">ISO<br>27701</div>
+        <div>
+          <div class="cert-name">ISO/IEC 27701 Lead Auditor</div>
+          <div class="cert-body">PECB — Privacy Information Management Systems. Directly applicable to GDPR, UK GDPR, NDPR, and POPIA operationalization.</div>
+        </div>
+      </div>
+
+      <div class="cert-item">
+        <div class="cert-badge">ISO<br>27001</div>
+        <div>
+          <div class="cert-name">ISO/IEC 27001 Lead Auditor</div>
+          <div class="cert-body">PECB — Information Security Management Systems. Covers risk treatment, controls design, and audit program management.</div>
+        </div>
+      </div>
+
+      <div class="cert-item">
+        <div class="cert-badge">ISO<br>22301</div>
+        <div>
+          <div class="cert-name">ISO 22301 Lead Auditor</div>
+          <div class="cert-body">PECB — Business Continuity Management. Operational resilience and BCM program design.</div>
+        </div>
+      </div>
+
+      <div class="cert-item">
+        <div class="cert-badge">ISO<br>9001</div>
+        <div>
+          <div class="cert-name">ISO 9001 Lead Auditor</div>
+          <div class="cert-body">PECB — Quality Management Systems. Applied across fintech operations and logistics compliance.</div>
+        </div>
+      </div>
+
+      <div class="cert-item">
+        <div class="cert-badge">CAMS<br>IP</div>
+        <div>
+          <div class="cert-name">CAMS (In Progress)</div>
+          <div class="cert-body">ACAMS — Certified Anti-Money Laundering Specialist. The globally recognised AML professional credential.</div>
+        </div>
+      </div>
+
+      <div class="cert-item">
+        <div class="cert-badge">NEB<br>OSH</div>
+        <div>
+          <div class="cert-name">NEBOSH IGC</div>
+          <div class="cert-body">NEBOSH International General Certificate in Occupational Health & Safety.</div>
+        </div>
+      </div>
+
+      <div class="cert-item">
+        <div class="cert-badge">B.<br>Eng</div>
+        <div>
+          <div class="cert-name">B.Eng Chemical Engineering</div>
+          <div class="cert-body">Nnamdi Azikiwe University, Awka — 2nd Class Honours. Analytical and process-thinking foundation.</div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<div class="contact-bar" id="contact">
+  <h2>Open to global remote roles</h2>
+  <p>AML · KYC/KYB · GRC · Data Privacy · iGaming Compliance · Crypto/Fintech</p>
+  <div class="contact-links">
+    <a href="mailto:williamkoggu@gmail.com" class="contact-btn btn-primary">Get in touch</a>
+    <a href="https://linkedin.com/in/williamkoggu" class="contact-btn btn-ghost" target="_blank">LinkedIn Profile</a>
+  </div>
+</div>
+
+<footer>
+  <span>William Koggu — Compliance Professional</span>
+  <span>Lagos, Nigeria · Available for remote global roles</span>
+</footer>
+
+</body>
+</html>
